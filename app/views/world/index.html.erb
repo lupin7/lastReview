@@ -1,0 +1,33 @@
+<h1>All Countries</h1>
+
+<%= render 'nav' %>
+
+<br />
+
+<% if session[:last_search] %>
+  <p>
+  	You recently searched for: 
+  	<% session[:last_search].each do |sesh| %>
+  		<br />
+  		<small>'<%= sesh %>'</small>
+  	<% end %>
+  </p>
+<% else %>
+  <p> You are searching for the first time </p>
+<% end %>
+
+<%= form_tag results_path, method: :get do |f| %>
+  <%= select_tag :country, options_for_select([
+											   ['All Countries', 1],
+											   ['Required Services', 2],
+											   ['Services Not Required', 3]
+											  ]) %>
+  <%= text_field_tag :search %>
+  <%= submit_tag "Search" %>
+<% end %>
+
+<% if flash[:notice] %>
+  <pre> <%= flash[:notice] %></pre>
+<% end %>
+
+<%= render 'countries' %>

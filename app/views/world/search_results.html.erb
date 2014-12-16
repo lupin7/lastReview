@@ -1,0 +1,12 @@
+<h1>Search Results for <%= params[:search] %> </h1>
+
+<% unless @result.nil? %>
+  <pre><%= flash[:found] %></pre>
+  <h3> <%= @result.name %> </h3>
+  <p> <strong> Population: </strong> <%= number_with_delimiter(@result.population, precision: 2, delimiter: ',') %> </p>
+  <p> <strong> Median Age: </strong> <%= number_with_delimiter(@result.median_age, precision: 2, delimiter: ',') %> </p>
+  <p> <strong> Life Expectancy: </strong> <%= (@result.life_expectancy).round(2) %> </p>
+  <p> <strong> GDP: </strong> <%= number_to_currency(@result.gdp) %> </p>
+<% end %>
+
+<%= link_to "Back", root_path %>

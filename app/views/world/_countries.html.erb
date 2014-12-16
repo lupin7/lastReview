@@ -1,0 +1,7 @@
+<% @countries.each do |country| %>
+  <h3> <%= country.name %> </h3>
+  <p> <strong> Population: </strong> <%= number_with_delimiter(country.population, precision: 2, delimiter: ',') %> </p>
+  <p> <strong> Median Age: </strong> <%= number_with_delimiter(country.median_age, precision: 2, delimiter: ',') %> </p>
+  <p> <strong> Life Expectancy: </strong> <%= (country.life_expectancy).round(2) %> </p>
+  <br />
+<% end %>
